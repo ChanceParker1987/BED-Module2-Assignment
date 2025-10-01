@@ -1,12 +1,19 @@
-import express, { Router } from "express";
-import * as employeeController from "../controllers/employeeController";
+import { Router } from "express";
+import {
+  getAllEmployees,
+  getEmployeeById,
+  createEmployee,
+  updateEmployee,
+  deleteEmployee,
+} from "../controllers/employeeController";
 
-const router: Router = express.Router();
+const router: Router = Router();
 
-router.get("/employees", employeeController.getAllEmployees);
-router.get("/employees/:id", employeeController.getEmployeeById);
-router.post("/employees", employeeController.createEmployee);
-router.put("/employees/:id", employeeController.updateEmployee);
-router.delete("/employees/:id", employeeController.deleteEmployee);
+// CRUD Endpoints for Employees
+router.get("/employees", getAllEmployees);        // GET all employees
+router.get("/employees/:id", getEmployeeById);    // GET employee by id
+router.post("/employees", createEmployee);        // CREATE new employee
+router.put("/employees/:id", updateEmployee);     // UPDATE employee
+router.delete("/employees/:id", deleteEmployee);  // DELETE employee
 
 export default router;
